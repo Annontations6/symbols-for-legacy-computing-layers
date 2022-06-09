@@ -44,15 +44,15 @@ class ReStackLayer
         };
         this.metaUpgrade = new RestackLayerUpgrade("All your Layer Resources are multiplied each second",
             level => new Decimal(1e10).pow(level.add("1").mul(level.add("1"))),
-            level => 1 + 0.3 * level.toNumber(),{
-                maxLevel: 5,
+            level => 1 + 1.5 * level.toNumber(),{
+                maxLevel: 1000000,
             });
         this.upgradeTree = [
             [
                 new RestackLayerUpgrade("Increase the Resource Multiplier",
                     level => new Decimal(1e24),
-                    level => Decimal.pow(2, level),{
-                        maxLevel: 1,
+                    level => Decimal.pow(3, level),{
+                        maxLevel: 1000000,
                         getEffectDisplay: effectDisplayTemplates.numberStandard(0, "^")
                     })
             ],
@@ -65,8 +65,8 @@ class ReStackLayer
                     }),
                 new RestackLayerUpgrade("Resource Multiplier Upgrades are stronger based on time spent this ReStack",
                 level => new Decimal(1e50),
-                level => new Decimal(1).add(Decimal.pow(2, level).sub(1).mul(this.timeSpent / 1000)),{
-                        maxLevel: 1,
+                level => new Decimal(1).add(Decimal.pow(10, level).sub(1).mul(this.timeSpent / 100)),{
+                        maxLevel: 308,
                         getEffectDisplay: effectDisplayTemplates.numberStandard(2, "^")
                     })
             ],
