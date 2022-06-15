@@ -139,7 +139,12 @@ class ReStackLayer
                         {
                             return this.level.gt(0) ? "Unlocked" : "Locked";
                         }
-                    })
+                    }),
+                new RestackLayerUpgrade("Resource Powerers are stronger",
+                    level => new Decimal("1ee370"),
+                    level => new Decimal(1).add(level.mul(9)), {
+                        maxLevel: 1
+                    }),
             ]
         ];
         this.upgradeTree[1][0].setRequirements([this.upgradeTree[0][0]], [this.upgradeTree[1][1]]);
@@ -163,7 +168,8 @@ class ReStackLayer
             resourcePowerersStrength: this.upgradeTree[5][0],
             resourceMultipliersLevelScaling: this.upgradeTree[5][1],
             noReset: this.upgradeTree[6][0],
-            unlockHackers: this.upgradeTree[7][0]
+            unlockHackers: this.upgradeTree[7][0],
+            resourcePowerersStrength2: this.upgradeTree[7][1]
         };
     }
 
